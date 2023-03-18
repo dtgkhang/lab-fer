@@ -160,7 +160,7 @@ export default function Dashboard() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const [modaldata, setmodaldata] = useState([]);
+  const [modaldata, setmodaldata] = useState({});
 
   const [searchedText, setSearchedText] = useState([]);
   const [filteredInfo, setFilteredInfo] = useState({});
@@ -174,6 +174,10 @@ export default function Dashboard() {
     currency: 'USD',
 
   });
+  // useEffect(() => {
+  //   setmodaldata();
+  // });
+  
 
   const columns = [
     {
@@ -252,7 +256,7 @@ export default function Dashboard() {
                 alignItems: "center",
               }}
             >
-              <form className="p-2 m-2" onSubmit={formik.handleSubmit}>
+              <form   className="p-2 m-2" onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <TextField
@@ -420,6 +424,7 @@ export default function Dashboard() {
         />
       </Col>
       <UpdateModal isModalOpen={isModalOpen}
+          destroyOnClose={true}
         handleOk={handleOk}
         handleCancel={handleCancel} record={modaldata}
         setRefresh={setRefreshKey} setIsModalOpen={undefined}

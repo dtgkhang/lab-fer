@@ -1,5 +1,5 @@
 import React from 'react'
-import { message, Modal } from 'antd'
+import { Form, message, Modal } from 'antd'
 import { createRoutesFromChildren, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from "yup";
@@ -46,13 +46,13 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
 
   const formik = useFormik({
     initialValues: {
-      Title: "",
-      Year: "",
+      Title: record.Title,
+      Year: record.Year,
       // Image: record.Image,
-      boxOffice: "",
-      Nation: "",
+      boxOffice: record.boxOffice,
+      Nation: record.Nation,
       // trailer:record.trailer,
-      data: '',
+      data: record.data,
     },
     onSubmit: (values, { resetForm }) => {
 
@@ -64,10 +64,10 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
 
     },
     validationSchema: Yup.object({
-      Title: Yup.string().required("Required.")
+      Title: Yup.string()
 
         .min(2, "Must be 2 characters or more"),
-      Nation: Yup.string().required("Required.").matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
+      Nation: Yup.string().matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ")
 
         .min(2, "Must be 2 characters or more"),
       //       Image: Yup.string()
@@ -76,14 +76,14 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
       //     trailer: Yup.string()
       //     .matches(URL, 'Enter a valid url')
       // , 
-      Year: Yup.string().matches(YearVal, 'Enter a valid year').required("Required.")
+      Year: Yup.string().matches(YearVal, 'Enter a valid year')
 
 
       ,
-      boxOffice: Yup.number().required("Required.").integer()
+      boxOffice: Yup.number().integer()
         .typeError("Please enter a valid number"),
 
-      data: Yup.string().required("Required.")
+      data: Yup.string()
 
         .min(10, "Must be 10 characters or more"),
 
@@ -91,7 +91,7 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
   });
 
   return (
-    <Modal width={600} title="Update movie" footer={null} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} setRefresh={setRefresh}
+    <Modal destroyOnClose width={600} title="Update movie" footer={null} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} setRefresh={setRefresh}
     >
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs" className=" ">
@@ -104,13 +104,14 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
               alignItems: "center",
             }}
           >
-            <form className="p-2 m-2" onSubmit={formik.handleSubmit}>
+            <form preserve={false}  className="p-2 m-2" onSubmit={formik.handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
                     label="Title"
                     name="Title"
+                    defaultValue={record.Title}
                     value={formik.values.Title}
                     onChange={formik.handleChange}
                   />
@@ -125,6 +126,8 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
                     label="Year"
                     name="Year"
                     fullWidth
+                    defaultValue={record.Year}
+
                     value={formik.values.Year}
                     onChange={formik.handleChange}
                   />
@@ -139,6 +142,8 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
                     label="Nation"
                     name="Nation"
                     fullWidth
+                    defaultValue={record.Nation}
+
                     value={formik.values.Nation}
                     onChange={formik.handleChange}
                   />
@@ -182,6 +187,7 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
                     label="Box Office"
                     name="boxOffice"
                     fullWidth
+                    defaultValue={record.boxOffice}
                     value={formik.values.boxOffice}
                     onChange={formik.handleChange}
                   />
@@ -196,6 +202,8 @@ function UpdateModal({ isModalOpen, handleOk, handleCancel, record, setIsModalOp
                     fullWidth
                     id="outlined-multiline-static"
                     label="Detail"
+                    defaultValue={record.data}
+
                     multiline
                     name="data"
                     rows={4}
