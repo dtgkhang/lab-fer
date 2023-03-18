@@ -1,0 +1,42 @@
+body.dark-mode{
+    background: rgba(15, 15, 102, 0.753)!important;
+    
+}
+
+body.dark-mode .navbar{
+    background: rgba(63, 32, 148, 0.97)!important;
+    color: white!important;
+}
+body.dark-mode .navbar li a{
+    background: rgba(63, 32, 148, 0.97)!important;
+    color: rgb(192, 190, 190)!important;    
+}
+
+body.dark-mode .card{
+    background-color: rgba(69, 69, 70, 0.616)!important;
+    
+}
+body.dark-mode .card  {
+color: rgb(192, 190, 190)!important;    
+}
+body.dark-mode .card span {
+    color: rgb(192, 190, 190)!important;    
+    }
+    body.dark-mode .card .ant-descriptions-title {
+        color: rgb(226, 226, 226)!important;    
+        }
+body.dark-mode footer{
+    background: rgba(63, 32, 148, 0.97)!important;
+    }
+
+    body.dark-mode .ant-modal-content{
+        color: rgb(182, 182, 182)!important;  
+        background-color: rgba(69, 69, 70, 0.973)!important;
+
+    }
+    body.dark-mode input{
+        border: 2px solid rgba(255, 255, 255, 0.616)
+    }
+    body.dark-mode textarea{
+        border: 2px solid rgba(255, 255, 255, 0.616)
+    }

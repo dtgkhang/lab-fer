@@ -1,0 +1,26 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #eaeaeade;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  .card:hover {
+    transform: translateY(-7px);
+  }
+
+  .background {
+    background: linear-gradient(92.98deg, #23262F 3.54%, rgba(35, 38, 47, 0.7) 93.38%);
+    border: 1px solid #FCFCFD;
+    background-color: #141416;
+    border-color: #353945;
+    box-shadow: 0px 40px 64px -32px rgba(15, 15, 15, 0.1);
+    backdrop-filter: blur(32px);
+    color: #FCFCFD;
+    font-weight: 600;
+  }
+
+  .background p {
+    color: #FCFCFD;
+    padding-bottom: 10px;
+
+  }
