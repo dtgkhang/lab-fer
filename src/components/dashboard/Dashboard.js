@@ -4,7 +4,7 @@ import {
   Popconfirm,
   Row,
   Col,
-  message, Button
+  message
 } from "antd";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { TextField } from "@mui/material";
 import {
   FormControlLabel,
   Switch,
-  Typography,
+  Typography,Button
 
 } from "@mui/material";
 import "./form.css";
@@ -369,7 +369,10 @@ export default function Dashboard() {
                     </Typography>
                   )}
                   <Grid item xs={12}>
-                    <Button
+                    <Button type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 3, mb: 2 }}
                     >
                       Send
                     </Button>
